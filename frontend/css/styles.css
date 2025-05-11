@@ -1,0 +1,631 @@
+@font-face {
+    font-family: 'Samarkan Font';
+    src: url('../fonts/SAMAN.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Xenotron Font';
+    src: url('../fonts/XENOTRON.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #e60000;
+    --primary-hover: #c00000;
+    --dark-color: #222;
+    --text-color: #333;
+    --light-color: #f5f5f5;
+    --white: #fff;
+    --gray: #999;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    position: fixed; /* Keep this as fixed to stay at top of page */
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent */
+    z-index: 1000;
+    transition: top 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px); /* Modern glass effect */
+}
+
+.logo-img {
+    width: 180px;
+    height: 70px;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: var(--transition);
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../logos/backg.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden; /* Contains the animation */
+}
+
+.hero .foreground-img {
+    position: absolute;
+    top: 80%;
+    left: 72%; /* Changed from 50% to 80% to position it more to the right */
+    transform: translate(-50%, -50%);
+    /* height: 500px;
+    width: 750px; Slightly increased size for better visibility */
+    z-index: 2;
+    animation: floatImage 4s ease-in-out infinite alternate;
+}
+
+/* @keyframes floatImage {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+} */
+
+.paramain {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 3; /* Keep above the floating car image */
+}
+
+.paramain h1 {
+    font-family: 'Samarkan Font', serif;
+    color: var(--primary-color);
+    font-size: 72px; /* Bigger for impact */
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    animation: fadeIn 1.5s ease-out;
+}
+
+.paramain h1 span {
+    font-family: 'Xenotron Font', sans-serif;
+    color: var(--white);
+    display: block; /* Put on separate line */
+    font-size: 64px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-out 0.5s backwards;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 14px 34px;
+    border-radius: 50px; /* Rounded button */
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1.5s ease-out 1s backwards;
+    box-shadow: 0 4px 15px rgba(230, 0, 0, 0.3);
+}
+
+.hero-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
+
+/* About Section */
+.about {
+    padding: 120px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 20%;
+    border-radius: 2px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 60px;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+    padding: 0 20px;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.03);
+}
+
+/* Cars Section */
+.cars {
+    background-color: #f9f9f9;
+    padding: 120px 5%;
+    position: relative;
+}
+
+.cars-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cars-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.car-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    top: 0;
+}
+
+.car-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.car-image {
+    height: 200px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.car-card:hover .car-image img {
+    transform: scale(1.1);
+}
+
+.car-info {
+    padding: 25px 20px;
+}
+
+.car-info h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 22px;
+}
+
+.car-info p {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.car-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--text-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 14px;
+    transition: all 0.3s;
+    border: none;
+}
+
+.car-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Sponsors Section */
+.sponsors {
+    padding: 120px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sponsors p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.sponsors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 60px;
+}
+
+.sponsor-logo {
+    width: 180px;
+    height: 100px;
+    background-color: rgba(249, 249, 249, 0.8);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    transition: all 0.4s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+}
+
+.sponsor-logo:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.sponsor-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Join Us Section */
+.join-us {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1400/800') center/cover no-repeat fixed;
+    padding: 150px 5%;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.join-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(230, 0, 0, 0.2), transparent 60%);
+}
+
+.join-us-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.join-us .section-title {
+    color: var(--white);
+}
+
+.join-us p {
+    margin-bottom: 40px;
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--white);
+    padding: 80px 5% 40px;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+    color: var(--white);
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a, .footer-links li {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 15px;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-links a {
+    color: var(--white);
+    background-color: #444;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero .foreground-img {
+        width: 250px;
+    }
+    
+    .paramain h1 {
+        font-size: 60px;
+    }
+    
+    .paramain h1 span {
+        font-size: 52px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 12px 5%;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px 10px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .paramain h1 {
+        font-size: 48px;
+    }
+    
+    .paramain h1 span {
+        font-size: 42px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .about-content, .footer-container {
+        flex-direction: column;
+    }
+    
+    .about-text, .about-image {
+        padding: 10px 0;
+    }
+    
+    .car-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .paramain h1 {
+        font-size: 36px;
+    }
+    
+    .paramain h1 span {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: 14px;
+    }
+    
+    .hero-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .hero .foreground-img {
+        width: 200px;
+    }
+}
